@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Game from './Game';
+import Mine from './Mine';
+import Friends from './Friends';
+import Earn from './Earn';
+import Airdrop from './Airdrop';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={Game} />
+        <Route path="/mine" component={Mine} />
+        <Route path="/friends" component={Friends} />
+        <Route path="/earn" component={Earn} />
+        <Route path="/airdrop" component={Airdrop} />
+      </Switch>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
