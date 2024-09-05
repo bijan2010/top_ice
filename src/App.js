@@ -1,21 +1,21 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Game from './Game';
-import Mine from './Mine';
-import Friends from './Friends';
-import Earn from './Earn';
-import Airdrop from './Airdrop';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Game from './components/Game';
+import Mine from './components/Mine';
+import Friends from './components/Friends';
+import Earn from './components/Earn';
+import Airdrop from './components/Airdrop';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={Game} />
-        <Route path="/mine" component={Mine} />
-        <Route path="/friends" component={Friends} />
-        <Route path="/earn" component={Earn} />
-        <Route path="/airdrop" component={Airdrop} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Game />} />
+        <Route path="/mine" element={<Mine />} />
+        <Route path="/friends" element={<Friends />} />
+        <Route path="/earn" element={<Earn />} />
+        <Route path="/airdrop" element={<Airdrop />} />
+      </Routes>
     </BrowserRouter>
   );
 };
