@@ -36,7 +36,7 @@ const Game = () => {
             src="https://placehold.co/200x200" 
             alt="Character in ice bath" 
             className="rounded-full border-4 border-blue-500 cursor-pointer"
-            // onClick={} اینجا هر رویدادی که برای کلیک می‌خواهید را قرار دهید
+            onClick={() => console.log('Ice bath clicked')}
           />
         </div>
       </div>
@@ -45,18 +45,39 @@ const Game = () => {
           <i className="fas fa-bolt text-yellow-500"></i>
           <span>1248 / 1500</span>
         </div>
-        {/* لینک به صفحه Mine */}
         <div className="flex items-center space-x-2 cursor-pointer">
           <Link to="/mine">
             <i className="fas fa-rocket text-red-500"></i>
-            <span>برو به Mine</span>
+            <span>Boost</span>
           </Link>
         </div>
       </div>
       <div className="w-full bg-gray-700 h-1 mt-2 rounded-full">
         <div className="bg-yellow-500 h-full rounded-full" style={{ width: '83%' }}></div>
       </div>
-      {/* سایر بخش‌ها... */}
+      <div className="w-full flex justify-around items-center bg-gray-800 p-2 mt-4 rounded-lg">
+        <div className="flex flex-col items-center cursor-pointer">
+          <i className="fas fa-cube text-blue-500"></i>
+          <span>Game</span>
+        </div>
+        <div className="flex flex-col items-center cursor-pointer">
+          <img src="https://placehold.co/20x20" alt="Hammer icon" className="mb-1" />
+          <i className="fas fa-pickaxe text-gray-400"></i>
+          <span>Mine</span>
+        </div>
+        <div className="flex flex-col items-center cursor-pointer">
+          <i className="fas fa-users text-gray-400"></i>
+          <span>Friends</span>
+        </div>
+        <div className="flex flex-col items-center cursor-pointer">
+          <i className="fas fa-coins text-gray-400"></i>
+          <span>Earn</span>
+        </div>
+        <div className="flex flex-col items-center cursor-pointer">
+          <i className="fas fa-gift text-blue-500"></i>
+          <span>Airdrop</span>
+        </div>
+      </div>
     </div>
   );
 };
