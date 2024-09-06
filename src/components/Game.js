@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Game = () => {
+  const [count, setCount] = useState(1965);
+  const [energy, setEnergy] = useState(1248);
+  const [isClicking, setIsClicking] = useState(false);
+  const [timer, setTimer] = useState(null);
+
+  const handleClick = () => {
+    setCount(count + 4);
+    setEnergy(energy - 4);
+    setIsClicking(true);
+
+    if (timer) {
+      clearTimeout(timer);
+    }
+
+    setTimer(setTimeout(() => {
+      setIsClicking(false);
+    }, 3000));
+  };
+
   return (
     <div className="flex flex-col items-center p-4">
       <div className="w-full flex justify-between items-center bg-black p-2">
@@ -29,21 +48,21 @@ const Game = () => {
       </div>
       <div className="w-full bg-gray-900 p-4 mt-4 rounded-lg text-center">
         <i className="fas fa-snowflake text-blue-500 text-3xl"></i>
-        <h2 className="text-4xl font-bold mt-2">1965</h2>
+        <h2 className="text-4xl font-bold mt-2">{count}</h2>
         <p className="text-gray-400">Chilly Consultant • 3 / 9</p>
         <div className="mt-4 flex justify-center">
           <img 
             src="https://placehold.co/200x200" 
             alt="Character in ice bath" 
             className="rounded-full border-4 border-blue-500 cursor-pointer"
-            onClick={() => console.log('Ice bath clicked')}
+            onClick={handleClick}
           />
         </div>
       </div>
       <div className="w-full flex justify-between items-center bg-gray-900 p-4 mt-4 rounded-lg">
         <div className="flex items-center space-x-2">
           <i className="fas fa-bolt text-yellow-500"></i>
-          <span>1248 / 1500</span>
+          <span>{energy} / 1500</span>
         </div>
         <div className="flex items-center space-x-2 cursor-pointer">
           <Link to="/mine">
@@ -53,7 +72,7 @@ const Game = () => {
         </div>
       </div>
       <div className="w-full bg-gray-700 h-1 mt-2 rounded-full">
-        <div className="bg-yellow-500 h-full rounded-full" style={{ width: '83%' }}></div>
+        <div className="bg-yellow-500 h-full rounded-full" style={{ width: `${(energy / 1500) * 100}%` }}></div>
       </div>
       <div className="w-full flex justify-around items-center bg-gray-800 p-2 mt-4 rounded-lg">
         <div className="flex flex-col items-center cursor-pointer">
